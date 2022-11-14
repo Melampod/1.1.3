@@ -1,6 +1,8 @@
 package jm.task.core.jdbc.util;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Util {
     private static final String URL = "jdbc:mysql://localhost:3306/mydb";
@@ -9,22 +11,14 @@ public class Util {
 
     private static Connection connection = null;
 
-    public static Connection getConnection(){
-        if (connection == null) {
-            try {
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return connection;
-    }
-
-    public static void closeConnection(){
+    public static Connection getConnection() {
         try {
-            connection.close();
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return connection;
     }
 }

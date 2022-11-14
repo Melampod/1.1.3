@@ -1,11 +1,13 @@
 package jm.task.core.jdbc.model;
 
+import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table
-public class User {
+public class User extends UserDaoJDBCImpl {
     @Id
     private Long id;
 
