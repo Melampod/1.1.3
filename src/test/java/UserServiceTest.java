@@ -39,8 +39,10 @@ public class UserServiceTest {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
+            List<User> usersList = userService.getAllUsers();
+            User user = usersList.get(0);
 
-            User user = userService.getAllUsers().get(0);
+           // User user = userService.getAllUsers().get(0);
 
             if (!testName.equals(user.getName())
                     || !testLastName.equals(user.getLastName())

@@ -23,7 +23,6 @@ public class Main {
 
         usersList = user.getAllUsers();
         usersList.stream().map(Object::toString).forEach(System.out::println);
-
         user.cleanUsersTable();
         user.dropUsersTable();
     }

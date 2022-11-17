@@ -2,13 +2,13 @@ package jm.task.core.jdbc.model;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Table
+@Entity
+@Table(name = "users")
 public class User extends UserDaoJDBCImpl {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -21,7 +21,6 @@ public class User extends UserDaoJDBCImpl {
     private Byte age;
 
     public User() {
-
     }
 
     public User(String name, String lastName, Byte age) {
